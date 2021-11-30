@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -9,13 +9,21 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    createchellenge.cpp \
+    gatheringinf.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    userdata.cpp
 
 HEADERS += \
-    mainwindow.h
+    createchellenge.h \
+    gatheringinf.h \
+    mainwindow.h \
+    userdata.h
 
 FORMS += \
+    createchellenge.ui \
+    gatheringinf.ui \
     mainwindow.ui
 
 # Default rules for deployment.
