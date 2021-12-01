@@ -22,9 +22,4 @@ MainWindow::~MainWindow()
 //    ui->comboBox->currentText();
 //}
 
-void MainWindow::on_pb_start_clicked()
-{
-    hide();
-    obj.show();
-}
 

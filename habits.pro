@@ -13,18 +13,19 @@ SOURCES += \
     gatheringinf.cpp \
     main.cpp \
     mainwindow.cpp \
-    userdata.cpp
+    start.cpp
 
 HEADERS += \
     createchellenge.h \
     gatheringinf.h \
     mainwindow.h \
-    userdata.h
+    start.h
 
 FORMS += \
     createchellenge.ui \
     gatheringinf.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    start.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

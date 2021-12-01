@@ -2,10 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "userdata.h"
 #include <QSqlDatabase>
 #include <QDebug>
-#include "gatheringinf.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,13 +17,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private slots:
-
-    void on_pb_start_clicked();
-
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db;
-    gatheringInf obj;
+
 };
 #endif // MAINWINDOW_H

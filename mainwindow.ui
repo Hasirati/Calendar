@@ -14,13 +14,13 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pb_start">
+   <widget class="QPushButton" name="pb_add">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>330</y>
-      <width>181</width>
-      <height>81</height>
+      <x>260</x>
+      <y>410</y>
+      <width>51</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -29,7 +29,30 @@
      </font>
     </property>
     <property name="text">
-     <string>START</string>
+     <string>+</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_ListCallenge">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>180</y>
+      <width>291</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QCalendarWidget" name="calendar">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>280</width>
+      <height>156</height>
+     </rect>
     </property>
    </widget>
   </widget>
