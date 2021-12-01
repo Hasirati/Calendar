@@ -16,19 +16,20 @@
   <widget class="QLabel" name="lb_question">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>50</y>
-     <width>231</width>
-     <height>131</height>
+     <x>30</x>
+     <y>20</y>
+     <width>253</width>
+     <height>151</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
+     <pointsize>22</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>What time do you 
+wake up?</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -37,10 +38,10 @@
   <widget class="QTimeEdit" name="timeWakeUp">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>260</y>
-     <width>111</width>
-     <height>51</height>
+     <x>90</x>
+     <y>230</y>
+     <width>151</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
@@ -57,7 +58,7 @@
     <rect>
      <x>190</x>
      <y>410</y>
-     <width>101</width>
+     <width>111</width>
      <height>41</height>
     </rect>
    </property>
@@ -70,7 +71,47 @@
     <string>Next page</string>
    </property>
   </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>220</y>
+     <width>101</width>
+     <height>86</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QRadioButton" name="rb_yes">
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Yes</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="rb_no">
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>No</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
+ <tabstops>
+  <tabstop>timeWakeUp</tabstop>
+  <tabstop>pb_next</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

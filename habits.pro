@@ -13,13 +13,15 @@ SOURCES += \
     gatheringinf.cpp \
     main.cpp \
     mainwindow.cpp \
-    start.cpp
+    start.cpp \
+    userinfo.cpp
 
 HEADERS += \
     createchellenge.h \
     gatheringinf.h \
     mainwindow.h \
-    start.h
+    start.h \
+    userinfo.h
 
 FORMS += \
     createchellenge.ui \

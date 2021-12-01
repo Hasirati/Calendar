@@ -4,8 +4,12 @@
 #include <QWidget>
 #include <QString>
 #include <iostream>
-
+#include "userinfo.h"
+#include <fstream>
+#include <QMessageBox>
+#include "createchellenge.h"
 using namespace std;
+
 namespace Ui {
 class gatheringInf;
 }
@@ -13,21 +17,21 @@ class gatheringInf;
 class gatheringInf : public QWidget
 {
     Q_OBJECT
-    int HOUR, MINUTE;
-    enum answer {Yes, No};
+
 public:
-    gatheringInf();
     explicit gatheringInf(QWidget *parent = nullptr);
     ~gatheringInf();
-    void getWakeUp();
-    void getResultDay();
-    void getSelfControl();
+
 
 private slots:
     void on_pb_next_clicked();
 
 private:
     Ui::gatheringInf *ui;
+    UserInfo *userInfo;
+    int stage = 1;
+    bool answer;
+    CreateChellenge obj;
 };
 
 #endif // GATHERINGINF_H

@@ -15,8 +15,18 @@ public:
     explicit CreateChellenge(QWidget *parent = nullptr);
     ~CreateChellenge();
 
+private slots:
+    void on_pb_water_clicked();
+
+    void on_pb_walk_clicked();
+
+    void on_pb_train_clicked();
+
+    void on_pb_read_clicked();
+
 private:
     Ui::CreateChellenge *ui;
+    MainWindow obj;
 };
 
 #endif // CREATECHELLENGE_H
