@@ -19,7 +19,7 @@
      <x>70</x>
      <y>200</y>
      <width>181</width>
-     <height>61</height>
+     <height>100</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -127,6 +127,24 @@ challenge</string>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="pb_next">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>440</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Next</string>
+   </property>
   </widget>
  </widget>
  <resources/>

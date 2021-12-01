@@ -35,7 +35,7 @@ wake up?</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QTimeEdit" name="timeWakeUp">
+  <widget class="QTimeEdit" name="time">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -71,7 +71,7 @@ wake up?</string>
     <string>Next page</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -109,7 +109,7 @@ wake up?</string>
   </widget>
  </widget>
  <tabstops>
-  <tabstop>timeWakeUp</tabstop>
+  <tabstop>time</tabstop>
   <tabstop>pb_next</tabstop>
  </tabstops>
  <resources/>
