@@ -1,7 +1,8 @@
 #include "gatheringinf.h"
 #include "ui_gatheringinf.h"
+#include <QMessageBox>
 
-gatheringInf::gatheringInf(QWidget *parent)
+GatheringInf::GatheringInf(QWidget *parent)
     : QWidget(parent), ui(new Ui::gatheringInf) {
   ui->setupUi(this);
   ui->rb_yes->close();
@@ -9,9 +10,9 @@ gatheringInf::gatheringInf(QWidget *parent)
   userInfo = new UserInfo();
 }
 
-gatheringInf::~gatheringInf() { delete ui; }
+GatheringInf::~GatheringInf() { delete ui; }
 
-void gatheringInf::on_pb_next_clicked() {
+void GatheringInf::on_pb_next_clicked() {
   switch (stage) {
   case 1: {
     //        ofstream out("userInfo.txt");
@@ -47,3 +48,10 @@ void gatheringInf::on_pb_next_clicked() {
   }
   }
 }
+
+void GatheringInf::on_rb_no_clicked()
+{
+    QMessageBox::warning(this, "I`m sorry, but", "\tYou loser!\t");
+    QApplication::exit();
+}
+

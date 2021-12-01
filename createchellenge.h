@@ -24,8 +24,6 @@ private slots:
 
   void on_pb_read_clicked();
 
-  void on_pushButton_clicked();
-
   void on_pb_next_clicked();
 
 private:

@@ -3,7 +3,8 @@
 
 #include <QDebug>
 #include <QMainWindow>
-#include <QSqlDatabase>
+#include "dbmanager.h"
+#include <QTreeView>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,8 +19,14 @@ public:
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
 
+private slots:
+  void on_pb_add_clicked();
+
 private:
   Ui::MainWindow *ui;
-  QSqlDatabase db;
+  DBManager* dbmanager;
+
 };
 #endif // MAINWINDOW_H
+
+//http://www.java2s.com/Code/Cpp/Qt/QTreeViewdemoandQStandardItem.htm

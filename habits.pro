@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     createchellenge.cpp \
+    dbmanager.cpp \
     gatheringinf.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
 
 HEADERS += \
     createchellenge.h \
+    dbmanager.h \
     gatheringinf.h \
     mainwindow.h \
     start.h \

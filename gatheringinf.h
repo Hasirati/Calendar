@@ -14,15 +14,17 @@ namespace Ui {
 class gatheringInf;
 }
 
-class gatheringInf : public QWidget {
+class GatheringInf : public QWidget {
   Q_OBJECT
 
 public:
-  explicit gatheringInf(QWidget *parent = nullptr);
-  ~gatheringInf();
+  explicit GatheringInf(QWidget *parent = nullptr);
+  ~GatheringInf();
 
 private slots:
   void on_pb_next_clicked();
+
+  void on_rb_no_clicked();
 
 private:
   Ui::gatheringInf *ui;

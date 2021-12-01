@@ -20,7 +20,7 @@ private slots:
 
 private:
   Ui::Start *ui;
-  gatheringInf obj;
+  GatheringInf obj;
 };
 
 #endif // START_H
