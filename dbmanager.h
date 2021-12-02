@@ -3,23 +3,18 @@
 
 #include <QSqlDatabase>
 
+class DBManager {
+  QSqlDatabase db;
 
-class DBManager
-{
-    QSqlDatabase db;
-
-    static DBManager* instance;
-
-private:
-    DBManager();
+  static DBManager *instance;
 
 public:
-    static DBManager* getInstance();
-    QSqlDatabase getDB();
+  DBManager();
+  static DBManager *getInstance();
+  QSqlDatabase getDB();
 
-    DBManager(DBManager &other) = delete;
-    void operator=(const DBManager &) = delete;
-
+  DBManager(DBManager &other) = delete;
+  void operator=(const DBManager &) = delete;
 };
 
 #endif // DBMANAGER_H

@@ -1,9 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "dbmanager.h"
 #include <QDebug>
 #include <QMainWindow>
-#include "dbmanager.h"
 #include <QTreeView>
 
 QT_BEGIN_NAMESPACE
@@ -24,9 +24,6 @@ private slots:
 
 private:
   Ui::MainWindow *ui;
-  DBManager* dbmanager;
-
+  DBManager *dbmanager;
 };
 #endif // MAINWINDOW_H
-
-//http://www.java2s.com/Code/Cpp/Qt/QTreeViewdemoandQStandardItem.htm

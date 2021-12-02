@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>320</width>
+    <width>323</width>
     <height>500</height>
    </rect>
   </property>
@@ -58,15 +58,27 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>9</x>
-      <y>-1</y>
-      <width>301</width>
-      <height>451</height>
+      <x>20</x>
+      <y>10</y>
+      <width>281</width>
+      <height>401</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QTreeView" name="treeView"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Further</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -76,7 +88,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>320</width>
+     <width>323</width>
      <height>20</height>
     </rect>
    </property>
