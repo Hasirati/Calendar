@@ -97,17 +97,18 @@ void EmplpyeeInfo::on_pushButton_3_clicked() {
 
 //вивід
 void EmplpyeeInfo::on_pb_show_clicked() {
-  //  Login conn;
-  //  QSqlQueryModel *modal = new QSqlQueryModel();
+    Login conn;
+    conn.connOpen();
+    QSqlTableModel *model = new QSqlTableModel();
 
-  //  conn.connOpen();
-  //  QSqlQuery *qry = new QSqlQuery(conn.mydb);
+//    QSqlQuery *qry = new QSqlQuery(conn.mydb);
 
-  //  qry->prepare("select * from challenge");
-  //  qry->exec();
-  //  modal->setQuery(*qry);
-  //  ui->treeView->setModel(modal);
+//    qry->prepare("select * from challenge");
+//    qry->exec();
+    model->setTable("challenge");
+    ui->tableView->setModel(model);
+    model->select();
 
-  //  conn.connClose();
-  //  qDebug() << (modal->rowCount());
+    conn.connClose();
+    qDebug() << (model->rowCount());
 }

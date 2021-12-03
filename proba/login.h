@@ -24,11 +24,10 @@ public:
     mydb.close();
     mydb.removeDatabase(QSqlDatabase::defaultConnection);
   }
+
   //відкриває
   bool connOpen() {
-    mydb = QSqlDatabase::addDatabase("QSQLITE");
-    mydb.setDatabaseName(
-        "D:/JULIA/OOP/course/course-Calendar-of-good-habits/DB.sqlite");
+
     //перевірка
     if (!mydb.open()) {
       qDebug() << "Not open";

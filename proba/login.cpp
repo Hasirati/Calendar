@@ -4,6 +4,10 @@
 Login::Login(QWidget *parent) : QMainWindow(parent), ui(new Ui::Login) {
   ui->setupUi(this);
 
+  mydb = QSqlDatabase::addDatabase("QSQLITE");
+  mydb.setDatabaseName(
+      "D:/Shozda/course-Calendar-of-good-habits/DB.sqlite");
+
   //перевіряю чи відкриваю файл
   if (!connOpen())
     ui->label->setText("Not open");

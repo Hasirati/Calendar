@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtSql>
+#include <QtDebug>
+#include <QFileInfo>
+#include <QMessageBox>
 
 class QTreeWidget;
 class QTreeWidgetItem;
@@ -16,8 +20,30 @@ class MainWindow : public QMainWindow {
   Q_OBJECT
 
 public:
+
+  QSqlDatabase mydb;
+
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
+
+  //закриває
+  void connClose() {
+    mydb.close();
+    mydb.removeDatabase(QSqlDatabase::defaultConnection);
+  }
+
+  //відкриває
+  bool connOpen() {
+
+    //перевірка
+    if (!mydb.open()) {
+      qDebug() << "Not open";
+      return false;
+    } else {
+      qDebug() << "Connected";
+      return true;
+    }
+  }
 
   virtual void process(QTreeWidget *tree_widget, QTreeWidgetItem *tree_item);
 private slots:
