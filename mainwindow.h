@@ -2,9 +2,15 @@
 #define MAINWINDOW_H
 
 #include "dbmanager.h"
+#include "treeview.h"
 #include <QDebug>
+#include <QDialog>
+#include <QFile>
+#include <QFileInfo>
 #include <QMainWindow>
-#include <QTreeView>
+#include <QMessageBox>
+#include <QWidget>
+#include <QtSql>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -22,8 +28,14 @@ public:
 private slots:
   void on_pb_add_clicked();
 
+  void on_pb_save_clicked();
+
+  void on_pb_update_clicked();
+
+  void on_pb_delete_clicked();
+
 private:
   Ui::MainWindow *ui;
-  DBManager *dbmanager;
+  TreeView obj;
 };
 #endif // MAINWINDOW_H

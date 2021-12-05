@@ -6,7 +6,7 @@ Login::Login(QWidget *parent) : QMainWindow(parent), ui(new Ui::Login) {
 
   mydb = QSqlDatabase::addDatabase("QSQLITE");
   mydb.setDatabaseName(
-      "D:/Shozda/course-Calendar-of-good-habits/DB.sqlite");
+      "D:/JULIA/OOP/course/course-Calendar-of-good-habits/DB.sqlite");
 
   //перевіряю чи відкриваю файл
   if (!connOpen())

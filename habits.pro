@@ -15,6 +15,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     start.cpp \
+    treeview.cpp \
     userinfo.cpp
 
 HEADERS += \
@@ -23,13 +24,15 @@ HEADERS += \
     gatheringinf.h \
     mainwindow.h \
     start.h \
+    treeview.h \
     userinfo.h
 
 FORMS += \
     createchellenge.ui \
     gatheringinf.ui \
     mainwindow.ui \
-    start.ui
+    start.ui \
+    treeview.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

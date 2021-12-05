@@ -49,9 +49,7 @@ void GatheringInf::on_pb_next_clicked() {
   }
 }
 
-void GatheringInf::on_rb_no_clicked()
-{
-    QMessageBox::warning(this, "I`m sorry, but", "\tYou loser!\t");
-    QApplication::exit();
+void GatheringInf::on_rb_no_clicked() {
+  QMessageBox::warning(this, "I`m sorry, but", "\tYou gave up too early!\t");
+  QApplication::exit();
 }
-

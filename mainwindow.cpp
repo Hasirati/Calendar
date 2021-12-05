@@ -1,30 +1,80 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QtSql/QSqlTableModel>
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
-  dbmanager = DBManager::getInstance();
-  QSqlTableModel model;
-  dbmanager->getDB();
-  ui->treeView->close();
 }
 
 MainWindow::~MainWindow() { delete ui; }
 
-void MainWindow::on_pb_add_clicked() {
-  ui->calendar->close();
-  ui->pb_add->close();
-  ui->lb_ListCallenge->close();
-  ui->treeView->show();
-  DBManager conn;
-  QSqlQueryModel *modal = new QSqlQueryModel;
+void MainWindow::on_pb_add_clicked() { obj.show(); }
 
-  conn.show();
-  QSqlQuery
+void MainWindow::on_pb_save_clicked() {
+  DBManager conn;
+  QString name, id;
+  name = ui->line_name->text();
+  id = ui->line_id->text();
+
+  if (!conn.connOpen()) {
+    qDebug() << "Not open";
+    return;
+  }
+
+  conn.connOpen();
+  QSqlQuery qry;
+  qry.prepare("insert into challenge (id, name) values('" + id + "','" + name +
+              "')");
+
+  if (qry.exec()) {
+    QMessageBox::critical(this, tr("Save"), tr("saved"));
+    conn.connClose();
+  } else {
+    QMessageBox::critical(this, tr("error::"), qry.lastError().text());
+  }
 }
-// https://www.youtube.com/watch?v=nZ9Mejld2lI&list=PLS1QulWo1RIZjrD_OLju84cUaUlLRe5jQ&index=14
-// https://www.youtube.com/watch?v=OrHitqwJu8Q&list=PLS1QulWo1RIZjrD_OLju84cUaUlLRe5jQ&index=18
-// https://www.youtube.com/watch?v=NJNl4eUa3Xc&list=PLS1QulWo1RIZjrD_OLju84cUaUlLRe5jQ&index=20
+
+void MainWindow::on_pb_update_clicked() {
+  DBManager conn;
+  QString name, id;
+  id = ui->line_id->text();
+  name = ui->line_name->text();
+
+  if (!conn.connOpen()) {
+    qDebug() << "Not open";
+    return;
+  }
+
+  conn.connOpen();
+  QSqlQuery qry;
+  qry.prepare("update challenge set Name='" + name + "' where id='" + id + "'");
+
+  if (qry.exec()) {
+    QMessageBox::critical(this, tr("Edit"), tr("update"));
+    conn.connClose();
+  } else {
+    QMessageBox::critical(this, tr("error::"), qry.lastError().text());
+  }
+}
+
+void MainWindow::on_pb_delete_clicked() {
+  DBManager conn;
+  QString id;
+  id = ui->line_id->text();
+
+  if (!conn.connOpen()) {
+    qDebug() << "Not open";
+    return;
+  }
+
+  conn.connOpen();
+  QSqlQuery qry;
+  qry.prepare("Delete from challenge where id='" + id + "'");
+
+  if (qry.exec()) {
+    QMessageBox::critical(this, tr("Delete"), tr("delete"));
+    conn.connClose();
+  } else {
+    QMessageBox::critical(this, tr("error::"), qry.lastError().text());
+  }
+}

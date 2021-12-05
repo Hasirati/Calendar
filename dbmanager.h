@@ -2,19 +2,31 @@
 #define DBMANAGER_H
 
 #include <QSqlDatabase>
+#include <QtDebug>
 
 class DBManager {
-  QSqlDatabase db;
-
-  static DBManager *instance;
 
 public:
   DBManager();
-  static DBManager *getInstance();
-  QSqlDatabase getDB();
+  QSqlDatabase mydb;
 
-  DBManager(DBManager &other) = delete;
-  void operator=(const DBManager &) = delete;
+  void connClose() {
+    mydb.close();
+    mydb.removeDatabase(QSqlDatabase::defaultConnection);
+  }
+
+  //відкриває
+  bool connOpen() {
+
+    //перевірка
+    if (!mydb.open()) {
+      qDebug() << "Not open";
+      return false;
+    } else {
+      qDebug() << "Connected";
+      return true;
+    }
+  }
 };
 
 #endif // DBMANAGER_H

@@ -6,7 +6,6 @@
 #include <QMessageBox>
 #include <QString>
 #include <QWidget>
-#include <fstream>
 #include <iostream>
 using namespace std;
 
