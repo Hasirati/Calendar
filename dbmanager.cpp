@@ -3,5 +3,5 @@
 DBManager::DBManager() {
   mydb = QSqlDatabase::addDatabase("QSQLITE");
   mydb.setDatabaseName(
-      "D:/JULIA/OOP/course/course-Calendar-of-good-habits/DB.sqlite");
+      "D:/Shozda/course-Calendar-of-good-habits/DB.sqlite");
 }

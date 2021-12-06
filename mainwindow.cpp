@@ -23,11 +23,11 @@ void MainWindow::on_pb_save_clicked() {
 
   conn.connOpen();
   QSqlQuery qry;
-  qry.prepare("insert into challenge (id, name) values('" + id + "','" + name +
+  qry.prepare("insert into MyChallenge (id, name) values('" + id + "','" + name +
               "')");
 
   if (qry.exec()) {
-    QMessageBox::critical(this, tr("Save"), tr("saved"));
+    QMessageBox::about(this, tr("Save"), tr("saved"));
     conn.connClose();
   } else {
     QMessageBox::critical(this, tr("error::"), qry.lastError().text());
@@ -47,10 +47,10 @@ void MainWindow::on_pb_update_clicked() {
 
   conn.connOpen();
   QSqlQuery qry;
-  qry.prepare("update challenge set Name='" + name + "' where id='" + id + "'");
+  qry.prepare("update MyChallenge set Name='" + name + "' where id='" + id + "'");
 
   if (qry.exec()) {
-    QMessageBox::critical(this, tr("Edit"), tr("update"));
+    QMessageBox::about(this, tr("Edit"), tr("update"));
     conn.connClose();
   } else {
     QMessageBox::critical(this, tr("error::"), qry.lastError().text());
@@ -69,12 +69,27 @@ void MainWindow::on_pb_delete_clicked() {
 
   conn.connOpen();
   QSqlQuery qry;
-  qry.prepare("Delete from challenge where id='" + id + "'");
+  qry.prepare("Delete from MyChallenge where id='" + id + "'");
 
   if (qry.exec()) {
-    QMessageBox::critical(this, tr("Delete"), tr("delete"));
+    QMessageBox::about(this, tr("Delete"), tr("delete"));
     conn.connClose();
   } else {
     QMessageBox::critical(this, tr("error::"), qry.lastError().text());
   }
 }
+
+void MainWindow::on_pb_show_clicked()
+{
+  DBManager conn;
+    conn.connOpen();
+    QSqlTableModel *model = new QSqlTableModel();
+
+    model->setTable("MyChallenge");
+    ui->tableView->setModel(model);
+    model->select();
+
+    conn.connClose();
+    qDebug() << (model->rowCount());
+}
+

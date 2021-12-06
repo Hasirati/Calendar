@@ -3,6 +3,8 @@
 
 Start::Start(QWidget *parent) : QWidget(parent), ui(new Ui::Start) {
   ui->setupUi(this);
+  QPixmap pix("D:/Shozda/course-Calendar-of-good-habits/picture/start.jpg");
+  ui->lb_pic->setPixmap(pix);
 }
 
 Start::~Start() { delete ui; }

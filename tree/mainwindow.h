@@ -5,6 +5,7 @@
 #include <QtSql>
 #include <QtDebug>
 #include <QFileInfo>
+#include "database.h"
 #include <QMessageBox>
 
 class QTreeWidget;
@@ -51,6 +52,7 @@ private slots:
 
 private:
   Ui::MainWindow *ui;
+  DataBase *db;
 
   bool listwidget_exists_item(const QString &item) const;
 };

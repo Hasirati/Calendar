@@ -2,26 +2,20 @@
 #include "mycheckbox.h"
 #include "qtreewigetutil.h"
 #include "ui_mainwindow.h"
+#include "database.h"
+#include <QTreeWidgetItem>
+#include <QSqlTableModel>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
-    mydb = QSqlDatabase::addDatabase("QSQLITE");
-    mydb.setDatabaseName(
-        "D:/Shozda/course-Calendar-of-good-habits/DB.sqlite");
-
-    //перевіряю чи відкриваю файл
-    if (!connOpen())
-      ui->label->setText("Not open");
-    else
-      ui->label->setText("Connected");
-
 
 //    QStringList *challengesList = new QStringList(); //{"popular habits","stay at home","most importantly"};  // отримати з БД
-//    QList<QTreeWidgetItem *> topItems;
-//    challengesList->setTable("challenge");
+   // QList<QTreeWidgetItem *> topItems;
+    QStringList tableList = db->getDB().tables();
 
+   // ui->treeWidget->addTopLevelItem();
 
 //    for (QString str: *challengesList) {
 //        QTreeWidgetItem *top = new QTreeWidgetItem({str});
@@ -36,21 +30,10 @@ MainWindow::MainWindow(QWidget *parent)
 //        top->addChildren(children);
 
 //        topItems.append(top);
-
 //    }
 
 //    ui->treeWidget->addTopLevelItems(topItems);
 
-
-    QSqlQueryModel *modal = new QSqlQueryModel();
-
-        connOpen();
-        QSqlQuery *qry = new QSqlQuery(mydb);
-
-        qry->prepare("select * from challenge");
-        qry->exec();
-        modal->setQuery(*qry);
-        ui->treeWidget->addTopLevelItems({modal});
 
     QTreeWidgetItem *top1 = new QTreeWidgetItem({"Grupa 1"});
     QTreeWidgetItem *top2 = new QTreeWidgetItem({"Grupa 2"});
@@ -77,6 +60,8 @@ MainWindow::MainWindow(QWidget *parent)
     top2->addChildren(children2);
     top3->addChildren(children3);
 
+
+
     ui->treeWidget->addTopLevelItems({top1, top2, top3});
 
     const int n_tops = ui->treeWidget->topLevelItemCount();
@@ -91,7 +76,9 @@ MainWindow::MainWindow(QWidget *parent)
     }
 }
 
-MainWindow::~MainWindow() { delete ui; }
+MainWindow::~MainWindow() {
+    delete db;
+    delete ui; }
 
 void MainWindow::process(QTreeWidget *tree_widget, QTreeWidgetItem *tree_item) {
     MyCheckBox *checkbox = static_cast<MyCheckBox *>(

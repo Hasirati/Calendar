@@ -34,6 +34,8 @@ private slots:
 
   void on_pb_delete_clicked();
 
+  void on_pb_show_clicked();
+
 private:
   Ui::MainWindow *ui;
   TreeView obj;
