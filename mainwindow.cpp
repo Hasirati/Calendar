@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "dbmanager.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -14,12 +15,15 @@ void MainWindow::on_pb_add_clicked() { obj.show(); }
 
 void MainWindow::on_pb_save_clicked() {
   DataBase conn;
-  QString name, id;
+  QString name, des;
   name = ui->line_name->text();
-  id = ui->line_id->text();
+  des = ui->line_des->text();
 
-  conn.inserIntoTable();
+  QVariantList data;
+  data.append(name);
+  data.append(des);
 
+  conn.inserIntoTable(data);
 }
 
 void MainWindow::on_pb_update_clicked() {
@@ -29,7 +33,12 @@ void MainWindow::on_pb_update_clicked() {
   name = ui->line_name->text();
   descrip = ui->line_des->text();
 
-    conn.updateTable();
+  QVariantList data;
+  data.append(id);
+  data.append(name);
+  data.append(descrip);
+
+  conn.updateTable(data);
 }
 
 void MainWindow::on_pb_delete_clicked() {
@@ -40,13 +49,14 @@ void MainWindow::on_pb_delete_clicked() {
   conn.deleteTape(id);
 }
 
-void MainWindow::on_pb_show_clicked()
-{
-    QSqlTableModel *model = new QSqlTableModel();
+void MainWindow::on_pb_show_clicked() {
+  QSqlTableModel *model = new QSqlTableModel();
 
-    model->setTable("MyChallenge");
-    ui->tableView->setModel(model);
-    model->select();
-    qDebug() << (model->rowCount());
+  model->setTable(TABLE_2);
+  ui->tableView->setModel(model);
+  model->select();
+  qDebug() << (model->rowCount());
+
+  // this->setQuery("SELECT " TABLE_2 ", " TABLE_DESCRIPTION_2 " FROM "
+  // TABLE_2);
 }
-

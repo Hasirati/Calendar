@@ -1,7 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "dbmanager.h"
 #include "treeview.h"
 #include <QDebug>
 #include <QDialog>
@@ -9,6 +8,8 @@
 #include <QFileInfo>
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QObject>
+#include <QSqlQueryModel>
 #include <QWidget>
 #include <QtSql>
 
