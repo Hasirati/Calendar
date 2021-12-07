@@ -1,32 +1,52 @@
-#ifndef DBMANAGER_H
-#define DBMANAGER_H
+#ifndef DATABASE_H
+#define DATABASE_H
 
+#include <QObject>
+#include <QSql>
+#include <QSqlQuery>
+#include <QSqlError>
 #include <QSqlDatabase>
-#include <QtDebug>
+#include <QFile>
+#include <QDate>
+#include <QDebug>
 
-class DBManager {
+#define DATABASE_HOSTNAME   "ExampleDataBase"
+#define DATABASE_NAME       "DB.sqlite"
 
+#define TABLE               "challenge"
+#define TABLE_NAME          "Name"
+#define TABLE_DESCRIPTION   "Description"
+
+#define TABLE_1             "children"
+#define TABLE_NAME_1          "Name "
+#define TABLE_DESCRIPTION_1   "Description"
+#define TABLE_LINK_1   "link"
+
+#define TABLE_2             "MyChallenge"
+#define TABLE_NAME_2          "name "
+#define TABLE_DESCRIPTION_2   "description"
+
+
+class DataBase : public QObject
+{
+    Q_OBJECT
 public:
-  DBManager();
-  QSqlDatabase mydb;
+    explicit DataBase(QObject *parent = 0);
+~DataBase();
+    void connectToDataBase();
+    bool inserIntoTable(const QVariantList &);
+    bool updateTable(const QVariantList &);
+    bool deleteTape(const int);
+    QSqlDatabase getDB();
 
-  void connClose() {
-    mydb.close();
-    mydb.removeDatabase(QSqlDatabase::defaultConnection);
-  }
+private:
+    QSqlDatabase    db;
 
-  //відкриває
-  bool connOpen() {
-
-    //перевірка
-    if (!mydb.open()) {
-      qDebug() << "Not open";
-      return false;
-    } else {
-      qDebug() << "Connected";
-      return true;
-    }
-  }
+private:
+    bool openDataBase();
+    bool restoreDataBase();
+    void closeDataBase();
+    bool createTable();
 };
 
-#endif // DBMANAGER_H
+#endif // DATABASE_H
