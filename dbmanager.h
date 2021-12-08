@@ -40,8 +40,7 @@ public slots:
   QSqlDatabase getDB();
 
 private:
-  QSqlDatabase db;
-
+    QSqlDatabase db;
   bool openDataBase();
   bool restoreDataBase();
   void closeDataBase();

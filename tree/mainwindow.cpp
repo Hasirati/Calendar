@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 //    QStringList *challengesList = new QStringList(); //{"popular habits","stay at home","most importantly"};  // отримати з БД
    // QList<QTreeWidgetItem *> topItems;
-    QStringList tableList = db->getDB().tables();
+  //  QStringList tableList = db->getDB().tables();
 
    // ui->treeWidget->addTopLevelItem();
 

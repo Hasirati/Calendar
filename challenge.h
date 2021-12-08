@@ -1,7 +1,7 @@
 #ifndef CHALLENGE_H
 #define CHALLENGE_H
 
-#include "database.h"
+#include "dbmanager.h"
 #include <QDebug>
 
 class Challenge

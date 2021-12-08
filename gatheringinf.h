@@ -25,6 +25,8 @@ private slots:
 
   void on_rb_no_clicked();
 
+  void on_rb_yes_clicked();
+
 private:
   Ui::gatheringInf *ui;
   UserInfo *userInfo;

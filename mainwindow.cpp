@@ -14,31 +14,45 @@ MainWindow::~MainWindow() { delete ui; }
 void MainWindow::on_pb_add_clicked() { obj.show(); }
 
 void MainWindow::on_pb_save_clicked() {
+  QSqlQuery query;
+
   DataBase conn;
   QString name, des;
   name = ui->line_name->text();
   des = ui->line_des->text();
 
+  if (!query.exec("SELECT * FROM" TABLE_2 "WHERE name ='" +name+"', description ='" +des+ "'")) {
+    QMessageBox::warning(this, "I`m sorry, but", "Such a record already exists");
+  }
+  else {
   QVariantList data;
   data.append(name);
   data.append(des);
 
   conn.inserIntoTable(data);
+  }
 }
 
 void MainWindow::on_pb_update_clicked() {
+    QSqlQuery query;
+
   DataBase conn;
-  QString name, id, descrip;
+  QString name, id, des;
   id = ui->line_id->text();
   name = ui->line_name->text();
-  descrip = ui->line_des->text();
+  des = ui->line_des->text();
 
+  if (!query.exec("SELECT * FROM" TABLE_2 "WHERE name ='" +name+"', description ='" +des+ "'")) {
+    QMessageBox::warning(this, "I`m sorry, but", "Such a record already exists");
+  }
+  else {
   QVariantList data;
   data.append(id);
   data.append(name);
-  data.append(descrip);
+  data.append(des);
 
   conn.updateTable(data);
+  }
 }
 
 void MainWindow::on_pb_delete_clicked() {

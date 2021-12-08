@@ -15,13 +15,6 @@ GatheringInf::~GatheringInf() { delete ui; }
 void GatheringInf::on_pb_next_clicked() {
   switch (stage) {
   case 1: {
-    //        ofstream out("userInfo.txt");
-    //            if (!out.is_open())
-    //                cout << "File not open" << endl;
-    //            else {
-
-    //            }
-    //            out.close();
     userInfo->setWakeUp(ui->time->time());
     ui->lb_question->setText(
         "At what time is it \nconvenient for you \nto sum up?");
@@ -37,19 +30,22 @@ void GatheringInf::on_pb_next_clicked() {
     ui->lb_question->setText("Do you want \nto change?");
     ui->rb_yes->show();
     ui->rb_no->show();
+    ui->pb_next->close();
     stage++;
     break;
   }
-  case 3: {
-    answer = ui->rb_yes->isChecked() + ui->rb_yes->isChecked();
-    hide();
-    obj.show();
-    break;
-  }
-  }
+}
 }
 
 void GatheringInf::on_rb_no_clicked() {
   QMessageBox::warning(this, "I`m sorry, but", "\tYou gave up too early!\t");
   QApplication::exit();
 }
+
+void GatheringInf::on_rb_yes_clicked()
+{
+        answer = ui->rb_yes->isChecked() + ui->rb_yes->isChecked();
+    hide();
+    obj.show();
+}
+

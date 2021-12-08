@@ -28,13 +28,9 @@ public:
 
 private slots:
   void on_pb_add_clicked();
-
   void on_pb_save_clicked();
-
   void on_pb_update_clicked();
-
   void on_pb_delete_clicked();
-
   void on_pb_show_clicked();
 
 private:

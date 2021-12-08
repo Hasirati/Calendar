@@ -6,7 +6,7 @@ DataBase::~DataBase() {}
 
 void DataBase::connectToDataBase() {
   if (!QFile(
-           "D:/JULIA/OOP/course/course-Calendar-of-good-habits/" DATABASE_NAME)
+           "D:/Shozda/course-Calendar-of-good-habits/" DATABASE_NAME)
            .exists())
     this->restoreDataBase();
   else
@@ -17,7 +17,7 @@ bool DataBase::restoreDataBase() {
   if (this->openDataBase()) {
     return (this->createTable()) ? true : false;
   } else {
-    qDebug() << "Не удалось восстановить базу данных";
+    qDebug() << "Failed to restore database";
     return false;
   }
   return false;
@@ -27,7 +27,7 @@ bool DataBase::openDataBase() {
   db = QSqlDatabase::addDatabase("QSQLITE");
   db.setHostName(DATABASE_HOSTNAME);
   db.setDatabaseName(
-      "D:/JULIA/OOP/course/course-Calendar-of-good-habits/" DATABASE_NAME);
+      "D:/Shozda/course-Calendar-of-good-habits/" DATABASE_NAME);
   if (db.open()) {
     return true;
   } else {
@@ -76,10 +76,10 @@ bool DataBase::updateTable(const QVariantList &data) {
                 " = :name," TABLE_DESCRIPTION_2
                 " = :description where id = :id");
   query.bindValue(":name", data[0].toString());
-  query.bindValue(":description", data[1].toInt());
+  query.bindValue(":description", data[1].toString());
 
   if (!query.exec()) {
-    qDebug() << "error insert into " << TABLE;
+    qDebug() << "error update into " << TABLE_2;
     qDebug() << query.lastError().text();
     return false;
   } else {
