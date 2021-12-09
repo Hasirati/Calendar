@@ -4,7 +4,6 @@
 #include "createchellenge.h"
 #include "userinfo.h"
 #include <QMessageBox>
-#include <QString>
 #include <QWidget>
 #include <iostream>
 using namespace std;

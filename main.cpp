@@ -1,5 +1,6 @@
 #include "dbmanager.h"
 #include "start.h"
+#include "userinfo.h"
 
 #include <QApplication>
 
@@ -11,5 +12,6 @@ int main(int argc, char *argv[]) {
 
   Start w;
   w.show();
+
   return a.exec();
 }

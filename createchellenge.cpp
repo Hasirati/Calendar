@@ -23,9 +23,9 @@ void CreateChellenge::on_pb_water_clicked() {
 
   DataBase conn;
   QString name = "Drink water";
-  QString des = "\0";
-int str = ui->lineEdit->text().toInt();
-  des =  QString::number(str) + " glasses a day";
+  QString des;// = "\0";
+ QString str = ui->lineEdit->text();
+  des =  str + " glasses a day";
   QVariantList data;
   data.append(name);
   data.append(des);

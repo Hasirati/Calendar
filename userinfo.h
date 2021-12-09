@@ -2,6 +2,9 @@
 #define USERINFO_H
 
 #include <QTime>
+#include <fstream>
+#include <QDir>
+#include <QString>
 #include <iostream>
 using namespace std;
 
