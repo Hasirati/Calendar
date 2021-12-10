@@ -6,7 +6,7 @@ DataBase::~DataBase() {}
 
 void DataBase::connectToDataBase() {
   if (!QFile(
-           "D:/Shozda/course-Calendar-of-good-habits/" DATABASE_NAME)
+           "D:/JULIA/OOP/course/course-Calendar-of-good-habits/" DATABASE_NAME)
            .exists())
     this->restoreDataBase();
   else
@@ -27,7 +27,7 @@ bool DataBase::openDataBase() {
   db = QSqlDatabase::addDatabase("QSQLITE");
   db.setHostName(DATABASE_HOSTNAME);
   db.setDatabaseName(
-      "D:/Shozda/course-Calendar-of-good-habits/" DATABASE_NAME);
+      "D:/JULIA/OOP/course/course-Calendar-of-good-habits/" DATABASE_NAME);
   if (db.open()) {
     return true;
   } else {
@@ -50,8 +50,8 @@ bool DataBase::createTable() {
 
   if (!query.exec("CREATE TABLE " TABLE_1 " ("
                   "id INTEGER PRIMARY KEY AUTOINCREMENT, " TABLE_NAME_1
-                  " VARCHAR(255) NOT NULL," TABLE_DESCRIPTION_1
-                  " VARCHAR(255), " TABLE_LINK_1 "INTEGER NOT NULL"
+                  " VARCHAR(255) NOT NULL," TABLE_POINTS_1
+                  " INTEGER NOT NULL, " TABLE_LINK_1 "INTEGER NOT NULL"
                   " )")) {
     qDebug() << "DataBase: error of create " << TABLE;
     qDebug() << query.lastError().text();
@@ -59,8 +59,16 @@ bool DataBase::createTable() {
   }
   if (!query.exec("CREATE TABLE " TABLE_2 " ("
                   "id INTEGER PRIMARY KEY AUTOINCREMENT, " TABLE_NAME_2
-                  " VARCHAR(255) NOT NULL," TABLE_DESCRIPTION_2 " VARCHAR(255) "
-                  " )")) {
+                  " VARCHAR(255) NOT NULL," TABLE_DESCRIPTION_2
+                  " VARCHAR(255), " TABLE_POINTS_1 " INTEGER NOT NULL)")) {
+    qDebug() << "DataBase: error of create " << TABLE;
+    qDebug() << query.lastError().text();
+    return false;
+  }
+  if (!query.exec("CREATE TABLE " TABLE_3 " ("
+                  "id INTEGER PRIMARY KEY AUTOINCREMENT, " TABLE_NAME_3
+                  " VARCHAR(255) NOT NULL," TABLE_POINTS_1
+                  " INTEGER NOT NULL)")) {
     qDebug() << "DataBase: error of create " << TABLE;
     qDebug() << query.lastError().text();
     return false;
@@ -72,11 +80,10 @@ bool DataBase::createTable() {
 
 bool DataBase::updateTable(const QVariantList &data) {
   QSqlQuery query;
-  query.prepare("UPDATE" TABLE_2 " set " TABLE_NAME_2
-                " = :name," TABLE_DESCRIPTION_2
-                " = :description where id = :id");
+  query.prepare("UPDATE" TABLE_2 " set " TABLE_NAME_2 " = :name," TABLE_POINTS_2
+                " = :points where id = :id");
   query.bindValue(":name", data[0].toString());
-  query.bindValue(":description", data[1].toString());
+  query.bindValue(":points", data[1].toString());
 
   if (!query.exec()) {
     qDebug() << "error update into " << TABLE_2;
@@ -106,11 +113,11 @@ bool DataBase::deleteTape(const int id) {
 
 bool DataBase::inserIntoTable(const QVariantList &data) {
   QSqlQuery query;
-  query.prepare("INSERT INTO " TABLE_2 " ( " TABLE_NAME_2
-                ", " TABLE_DESCRIPTION_2 " ) "
-                "VALUES (:name, :description)");
+  query.prepare("INSERT INTO " TABLE_2 " ( " TABLE_NAME_2 ", " TABLE_POINTS_2
+                " ) "
+                "VALUES (:name, :points)");
   query.bindValue(":name", data[0].toString());
-  query.bindValue(":description", data[1].toString());
+  query.bindValue(":points", data[1].toString());
 
   if (!query.exec()) {
     qDebug() << "error insert into " << TABLE;

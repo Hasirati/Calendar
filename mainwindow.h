@@ -1,7 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "adward.h"
 #include "treeview.h"
+
 #include <QDebug>
 #include <QDialog>
 #include <QFile>
@@ -33,8 +35,11 @@ private slots:
   void on_pb_delete_clicked();
   void on_pb_show_clicked();
 
+  void on_pb_done_clicked();
+
 private:
   Ui::MainWindow *ui;
   TreeView obj;
+  Adward obj1;
 };
 #endif // MAINWINDOW_H

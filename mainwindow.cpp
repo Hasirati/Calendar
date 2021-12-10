@@ -17,41 +17,43 @@ void MainWindow::on_pb_save_clicked() {
   QSqlQuery query;
 
   DataBase conn;
-  QString name, des;
+  QString name, point;
   name = ui->line_name->text();
-  des = ui->line_des->text();
+  point = ui->line_point->text();
 
-  if (!query.exec("SELECT * FROM" TABLE_2 "WHERE name ='" +name+"', description ='" +des+ "'")) {
-    QMessageBox::warning(this, "I`m sorry, but", "Such a record already exists");
-  }
-  else {
-  QVariantList data;
-  data.append(name);
-  data.append(des);
+  if (!query.exec("SELECT * FROM" TABLE_2 "WHERE name ='" + name +
+                  "', points ='" + point + "'")) {
+    QMessageBox::warning(this, "I`m sorry, but",
+                         "Such a record already exists");
+  } else {
+    QVariantList data;
+    data.append(name);
+    data.append(point);
 
-  conn.inserIntoTable(data);
+    conn.inserIntoTable(data);
   }
 }
-
+//не працює
 void MainWindow::on_pb_update_clicked() {
-    QSqlQuery query;
+  QSqlQuery query;
 
   DataBase conn;
-  QString name, id, des;
+  QString name, id, point;
   id = ui->line_id->text();
   name = ui->line_name->text();
-  des = ui->line_des->text();
+  point = ui->line_point->text();
 
-  if (!query.exec("SELECT * FROM" TABLE_2 "WHERE name ='" +name+"', description ='" +des+ "'")) {
-    QMessageBox::warning(this, "I`m sorry, but", "Such a record already exists");
-  }
-  else {
-  QVariantList data;
-  data.append(id);
-  data.append(name);
-  data.append(des);
+  if (!query.exec("SELECT * FROM" TABLE_2 "WHERE name ='" + name +
+                  "', points ='" + point + "'")) {
+    QMessageBox::warning(this, "I`m sorry, but",
+                         "Such a record already exists");
+  } else {
+    QVariantList data;
+    data.append(id);
+    data.append(name);
+    data.append(point);
 
-  conn.updateTable(data);
+    conn.updateTable(data);
   }
 }
 
@@ -74,3 +76,5 @@ void MainWindow::on_pb_show_clicked() {
   // this->setQuery("SELECT " TABLE_2 ", " TABLE_DESCRIPTION_2 " FROM "
   // TABLE_2);
 }
+
+void MainWindow::on_pb_done_clicked() { obj1.show(); }

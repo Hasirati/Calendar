@@ -19,12 +19,17 @@
 
 #define TABLE_1 "children"
 #define TABLE_NAME_1 "Name "
-#define TABLE_DESCRIPTION_1 "Description"
+#define TABLE_POINTS_1 "Points"
 #define TABLE_LINK_1 "link"
 
 #define TABLE_2 "MyChallenge"
 #define TABLE_NAME_2 "name "
 #define TABLE_DESCRIPTION_2 "description"
+#define TABLE_POINTS_2 "points"
+
+#define TABLE_3 "Award"
+#define TABLE_NAME_3 "Name"
+#define TABLE_POINTS_3 "Points"
 
 class DataBase : public QObject {
   Q_OBJECT
@@ -40,7 +45,7 @@ public slots:
   QSqlDatabase getDB();
 
 private:
-    QSqlDatabase db;
+  QSqlDatabase db;
   bool openDataBase();
   bool restoreDataBase();
   void closeDataBase();

@@ -1,7 +1,7 @@
 #include "createchellenge.h"
+#include "dbmanager.h"
 #include "mainwindow.h"
 #include "ui_createchellenge.h"
-#include "dbmanager.h"
 
 CreateChellenge::CreateChellenge(QWidget *parent)
     : QWidget(parent), ui(new Ui::CreateChellenge) {
@@ -21,11 +21,12 @@ void CreateChellenge::on_pb_water_clicked() {
   ui->lineEdit->show();
   ui->pb_next->show();
 
+  //в таблиці не вибиває число, яке введене
   DataBase conn;
   QString name = "Drink water";
-  QString des;// = "\0";
- QString str = ui->lineEdit->text();
-  des =  str + " glasses a day";
+  QString des = "\0";
+  // QString str = ui->lineEdit->text();
+  des = ui->lineEdit->text() + " glasses a day";
   QVariantList data;
   data.append(name);
   data.append(des);
@@ -45,10 +46,10 @@ void CreateChellenge::on_pb_walk_clicked() {
   QString name = "Walk", des = "\0";
   QString str = ui->lineEdit->text();
   QString str1 = " kilometers";
-des =  str + " " + str1;
+  des = str + " " + str1;
   QVariantList data;
   data.append(name);
-    data.append(des);
+  data.append(des);
   conn.inserIntoTable(data);
 }
 
@@ -68,7 +69,7 @@ void CreateChellenge::on_pb_train_clicked() {
   des = str + " " + str1;
   QVariantList data;
   data.append(name);
-    data.append(des);
+  data.append(des);
   conn.inserIntoTable(data);
 }
 
@@ -83,12 +84,12 @@ void CreateChellenge::on_pb_read_clicked() {
 
   DataBase conn;
   QString name = "Read", des = "\0";
-    QString str = ui->lineEdit->text();
-    QString str1 = " pages a day";
-  des =  str + " " + str1;
+  QString str = ui->lineEdit->text();
+  QString str1 = " pages a day";
+  des = str + " " + str1;
   QVariantList data;
   data.append(name);
-    data.append(des);
+  data.append(des);
   conn.inserIntoTable(data);
 }
 
