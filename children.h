@@ -13,14 +13,14 @@ public:
     Children();
     Children(QString, QString, int);
 
-void setName(QString);
-QString getName();
+    void setName(QString);
+    QString getName();
 
-void setDescription(QString);
-QString getDescription();
+    void setDescription(QString);
+    QString getDescription();
 
-void setLink(int);
-int getLink();
+    void setLink(int);
+    int getLink();
 };
 
 #endif // CHILDREN_H

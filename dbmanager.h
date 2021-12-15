@@ -9,9 +9,14 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QList>
+
+#include "challenge.h"
+
+#define PICTURE "D:/Shozda/course-Calendar-of-good-habits/picture/"
 
 #define DATABASE_HOSTNAME "DB"
-#define DATABASE_NAME "DB.sqlite"
+#define DATABASE_LINK "D:/Shozda/course-Calendar-of-good-habits/DB.sqlite"
 
 #define TABLE "challenge"
 #define TABLE_NAME "Name"
@@ -31,26 +36,30 @@
 #define TABLE_NAME_3 "Name"
 #define TABLE_POINTS_3 "Points"
 
-class DataBase : public QObject {
-  Q_OBJECT
+class DBManager : public QObject {
+    Q_OBJECT
 public:
-  explicit DataBase(QObject *parent = nullptr);
-  ~DataBase();
-  void connectToDataBase();
+    void connectToDataBase();
+    static DBManager* getInstance();
 
 public slots:
-  bool inserIntoTable(const QVariantList &);
-  bool inserIntoTable(const QString, const QString);
-  bool updateTable(const QVariantList &);
-  bool deleteTape(const int);
-  QSqlDatabase getDB();
+    bool inserIntoTable(const QVariantList &);
+    bool inserIntoTable(const QString);
+    bool inserIntoTable(const int);
+    bool updateTable(const QVariantList &);
+    bool deleteTape(const int);
+    QSqlDatabase getDB();
+    QList<Challenge> getChellengesList();
 
 private:
-  QSqlDatabase db;
-  bool openDataBase();
-  bool restoreDataBase();
-  void closeDataBase();
-  bool createTable();
+    static DBManager* instance;
+    QSqlDatabase db;
+    bool openDataBase();
+    bool restoreDataBase();
+    void closeDataBase();
+    bool createTable();
+    explicit DBManager(QObject *parent = nullptr);
+    ~DBManager();
 };
 
 #endif // DATABASE_H

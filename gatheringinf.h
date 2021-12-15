@@ -13,25 +13,23 @@ class gatheringInf;
 }
 
 class GatheringInf : public QWidget {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit GatheringInf(QWidget *parent = nullptr);
-  ~GatheringInf();
+    explicit GatheringInf(QWidget *parent = nullptr);
+    ~GatheringInf();
 
 private slots:
-  void on_pb_next_clicked();
-
-  void on_rb_no_clicked();
-
-  void on_rb_yes_clicked();
+    void on_pb_next_clicked();
+    void on_rb_no_clicked();
+    void on_rb_yes_clicked();
 
 private:
-  Ui::gatheringInf *ui;
-  UserInfo *userInfo;
-  int stage = 1;
-  bool answer;
-  CreateChellenge obj;
+    Ui::gatheringInf *ui;
+    UserInfo *userInfo;
+    int stage = 1;
+    bool answer;
+    CreateChellenge obj;
 };
 
 #endif // GATHERINGINF_H
