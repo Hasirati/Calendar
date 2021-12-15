@@ -10,7 +10,7 @@ Adward::Adward(QWidget *parent) : QDialog(parent), ui(new Ui::Adward) {
   model->select();
   qDebug() << (model->rowCount());
 
-  ui->lb_suma->setText(QString::number(sum));
+  // ui->lb_suma->setText(QString::number(sum));
 }
 
 Adward::~Adward() { delete ui; }

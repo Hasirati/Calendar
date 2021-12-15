@@ -18,7 +18,7 @@
 #define TABLE_DESCRIPTION "Description"
 
 #define TABLE_1 "children"
-#define TABLE_NAME_1 "Name "
+#define TABLE_NAME_1 "Name"
 #define TABLE_POINTS_1 "Points"
 #define TABLE_LINK_1 "link"
 
@@ -40,6 +40,7 @@ public:
 
 public slots:
   bool inserIntoTable(const QVariantList &);
+  bool inserIntoTable(const QString, const QString);
   bool updateTable(const QVariantList &);
   bool deleteTape(const int);
   QSqlDatabase getDB();

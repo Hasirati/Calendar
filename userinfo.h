@@ -1,16 +1,17 @@
 #ifndef USERINFO_H
 #define USERINFO_H
 
-#include <QTime>
-#include <fstream>
 #include <QDir>
 #include <QString>
+#include <QTime>
+#include <fstream>
 #include <iostream>
+
 using namespace std;
 
 class UserInfo {
-  QTime getUp;
-  QTime timeToResault;
+  QString getUp;
+  QString timeToResault;
 
 public:
   UserInfo();

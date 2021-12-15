@@ -40,7 +40,6 @@ void MyCheckBox::set_children_checked_unchecked(
 }
 
 void MyCheckBox::set_parent_checked(QTreeWidgetItem *my_tree_item) const {
-  //змінні
   QWidget *parent_widget = nullptr;
   QTreeWidget *tree_widget = nullptr;
   QTreeWidgetItem *parent_item = nullptr;

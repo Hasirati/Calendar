@@ -33,11 +33,14 @@ private slots:
   void on_pb_save_clicked();
   void on_pb_update_clicked();
   void on_pb_delete_clicked();
-  void on_pb_show_clicked();
 
   void on_pb_done_clicked();
 
+  void on_pb_adward_clicked();
+
 private:
+  int *sum = new int;
+
   Ui::MainWindow *ui;
   TreeView obj;
   Adward obj1;

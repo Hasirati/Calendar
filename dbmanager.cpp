@@ -41,7 +41,7 @@ bool DataBase::createTable() {
   QSqlQuery query;
   if (!query.exec("CREATE TABLE " TABLE " ("
                   "id INTEGER PRIMARY KEY AUTOINCREMENT, " TABLE_NAME
-                  " VARCHAR  NOT NULL," TABLE_DESCRIPTION " VARCHAR(255)"
+                  " VARCHAR  NOT NULL, " TABLE_DESCRIPTION " VARCHAR(255)"
                   " )")) {
     qDebug() << "DataBase: error of create " << TABLE;
     qDebug() << query.lastError().text();
@@ -50,8 +50,8 @@ bool DataBase::createTable() {
 
   if (!query.exec("CREATE TABLE " TABLE_1 " ("
                   "id INTEGER PRIMARY KEY AUTOINCREMENT, " TABLE_NAME_1
-                  " VARCHAR(255) NOT NULL," TABLE_POINTS_1
-                  " INTEGER NOT NULL, " TABLE_LINK_1 "INTEGER NOT NULL"
+                  " VARCHAR(255) NOT NULL, " TABLE_POINTS_1
+                  " INTEGER NOT NULL, " TABLE_LINK_1 " INTEGER NOT NULL"
                   " )")) {
     qDebug() << "DataBase: error of create " << TABLE;
     qDebug() << query.lastError().text();
@@ -59,7 +59,7 @@ bool DataBase::createTable() {
   }
   if (!query.exec("CREATE TABLE " TABLE_2 " ("
                   "id INTEGER PRIMARY KEY AUTOINCREMENT, " TABLE_NAME_2
-                  " VARCHAR(255) NOT NULL," TABLE_DESCRIPTION_2
+                  " VARCHAR(255) NOT NULL, " TABLE_DESCRIPTION_2
                   " VARCHAR(255), " TABLE_POINTS_1 " INTEGER NOT NULL)")) {
     qDebug() << "DataBase: error of create " << TABLE;
     qDebug() << query.lastError().text();
@@ -67,7 +67,7 @@ bool DataBase::createTable() {
   }
   if (!query.exec("CREATE TABLE " TABLE_3 " ("
                   "id INTEGER PRIMARY KEY AUTOINCREMENT, " TABLE_NAME_3
-                  " VARCHAR(255) NOT NULL," TABLE_POINTS_1
+                  " VARCHAR(255) NOT NULL, " TABLE_POINTS_1
                   " INTEGER NOT NULL)")) {
     qDebug() << "DataBase: error of create " << TABLE;
     qDebug() << query.lastError().text();
@@ -80,10 +80,11 @@ bool DataBase::createTable() {
 
 bool DataBase::updateTable(const QVariantList &data) {
   QSqlQuery query;
-  query.prepare("UPDATE" TABLE_2 " set " TABLE_NAME_2 " = :name," TABLE_POINTS_2
-                " = :points where id = :id");
-  query.bindValue(":name", data[0].toString());
-  query.bindValue(":points", data[1].toString());
+  query.prepare("UPDATE " TABLE_2 " set " TABLE_NAME_2
+                " = :name, " TABLE_POINTS_2 " = :points where id = :id");
+  query.bindValue(":id", data[0].toInt());
+  query.bindValue(":name", data[1].toString());
+  query.bindValue(":points", data[2].toInt());
 
   if (!query.exec()) {
     qDebug() << "error update into " << TABLE_2;
@@ -117,7 +118,25 @@ bool DataBase::inserIntoTable(const QVariantList &data) {
                 " ) "
                 "VALUES (:name, :points)");
   query.bindValue(":name", data[0].toString());
-  query.bindValue(":points", data[1].toString());
+  query.bindValue(":points", data[1].toInt());
+
+  if (!query.exec()) {
+    qDebug() << "error insert into " << TABLE;
+    qDebug() << query.lastError().text();
+    return false;
+  } else {
+    return true;
+  }
+  return false;
+}
+
+bool DataBase::inserIntoTable(const QString name, const QString points) {
+  QSqlQuery query;
+  query.prepare("INSERT INTO " TABLE_2 " ( " TABLE_NAME_2 ", " TABLE_POINTS_2
+                " ) "
+                "VALUES (:name, :points)");
+  query.bindValue(":name", name);
+  query.bindValue(":points", name);
 
   if (!query.exec()) {
     qDebug() << "error insert into " << TABLE;
