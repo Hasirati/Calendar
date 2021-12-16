@@ -109,6 +109,38 @@ bool DBManager::updateTable(const QVariantList &data) {
     return false;
 }
 
+bool DBManager::updateTable(const QString date) {
+    QSqlQuery query;
+    query.prepare("UPDATE " TABLE_2 " set " TABLE_NAME_2
+                  "= :name");
+    query.bindValue(":name", date);
+
+    if (!query.exec()) {
+        qDebug() << "error insert into " << TABLE;
+        qDebug() << query.lastError().text();
+        return false;
+    } else {
+        return true;
+    }
+    return false;
+}
+
+bool DBManager::updateTable(const int date) {
+    QSqlQuery query;
+    query.prepare("UPDATE " TABLE_2 " set " TABLE_POINTS_2
+                  "= :points");
+    query.bindValue(":points", date);
+
+    if (!query.exec()) {
+        qDebug() << "error insert into " << TABLE;
+        qDebug() << query.lastError().text();
+        return false;
+    } else {
+        return true;
+    }
+    return false;
+}
+
 bool DBManager::deleteTape(const int id) {
     QSqlQuery query;
 
@@ -132,42 +164,6 @@ bool DBManager::inserIntoTable(const QVariantList &data) {
                   "VALUES (:name, :points)");
     query.bindValue(":name", data[0].toString());
     query.bindValue(":points", data[1].toInt());
-
-    if (!query.exec()) {
-        qDebug() << "error insert into " << TABLE;
-        qDebug() << query.lastError().text();
-        return false;
-    } else {
-        return true;
-    }
-    return false;
-}
-
-bool DBManager::inserIntoTable(const QString date) {
-    QSqlQuery query;
-    query.prepare("INSERT INTO " TABLE_2 " ( " TABLE_NAME_2 ", " TABLE_POINTS_2
-                  " ) "
-                  "VALUES (:name)");
-    query.bindValue(":name", date);
-
-
-    if (!query.exec()) {
-        qDebug() << "error insert into " << TABLE;
-        qDebug() << query.lastError().text();
-        return false;
-    } else {
-        return true;
-    }
-    return false;
-}
-
-bool DBManager::inserIntoTable(const int date) {
-    QSqlQuery query;
-    query.prepare("INSERT INTO " TABLE_2 " ( " TABLE_NAME_2 ", " TABLE_POINTS_2
-                  " ) "
-                  "VALUES (:points)");
-    query.bindValue(":points", date);
-
 
     if (!query.exec()) {
         qDebug() << "error insert into " << TABLE;

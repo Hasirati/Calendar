@@ -7,7 +7,7 @@
 class Children
 {
     QString name;
-    QString description;
+    QString points;
     int link;
 public:
     Children();
@@ -16,8 +16,8 @@ public:
     void setName(QString);
     QString getName();
 
-    void setDescription(QString);
-    QString getDescription();
+    void setPoints(QString);
+    QString getPoints();
 
     void setLink(int);
     int getLink();

@@ -34,9 +34,7 @@ private slots:
     void on_pb_save_clicked();
     void on_pb_update_clicked();
     void on_pb_delete_clicked();
-
     void on_pb_done_clicked();
-
     void on_pb_adward_clicked();
 
 private:

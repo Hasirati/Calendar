@@ -5,10 +5,10 @@ Children::Children()
 
 }
 
-Children::Children(QString name, QString description, int link)
+Children::Children(QString name, QString points, int link)
 {
     this->name = name;
-    this->description = description;
+    this->points = points;
     this->link = link;
 }
 
@@ -22,14 +22,14 @@ QString Children::getName()
     return name;
 }
 
-void Children::setDescription(QString description)
+void Children::setPoints(QString description)
 {
-    this->description = description;
+    this->points = description;
 }
 
-QString Children::getDescription()
+QString Children::getPoints()
 {
-    return description;
+    return points;
 }
 
 void Children::setLink(int link)

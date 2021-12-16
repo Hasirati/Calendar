@@ -44,8 +44,8 @@ public:
 
 public slots:
     bool inserIntoTable(const QVariantList &);
-    bool inserIntoTable(const QString);
-    bool inserIntoTable(const int);
+    bool updateTable(const QString);
+    bool updateTable(const int);
     bool updateTable(const QVariantList &);
     bool deleteTape(const int);
     QSqlDatabase getDB();

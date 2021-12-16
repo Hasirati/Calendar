@@ -17,6 +17,7 @@ SOURCES += \
     gatheringinf.cpp \
     main.cpp \
     mainwindow.cpp \
+    mychallenge.cpp \
     mycheckbox.cpp \
     qtreewidgetutil.cpp \
     start.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     dbmanager.h \
     gatheringinf.h \
     mainwindow.h \
+    mychallenge.h \
     mycheckbox.h \
     qtreewidgetutil.h \
     start.h \
