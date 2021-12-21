@@ -9,6 +9,8 @@
 #include <QFileInfo>
 #include <QMessageBox>
 
+#include "dbmanager.h"
+
 class QTreeWidget;
 class QTreeWidgetItem;
 
@@ -17,19 +19,21 @@ class TreeView;
 }
 
 class TreeView : public QDialog {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  explicit TreeView(QWidget *parent = nullptr);
-  ~TreeView();
-      virtual void process(QTreeWidget *tree_widget, QTreeWidgetItem *tree_item);
-    QSqlDatabase db;
+    explicit TreeView(QWidget *parent = nullptr);
+    ~TreeView();
+    virtual void process(QTreeWidget *tree_widget, QTreeWidgetItem *tree_item);
 
 private slots:
-  void on_pb_further_clicked();
+    void on_pb_further_clicked();
 
 private:
-  Ui::TreeView *ui;
+    Ui::TreeView *ui;
+    DBManager *conn;
+    QList<Challenge> challengesList;
+    QMultiMap<int, Children*> childrensMultiMap;
     bool listwidget_exists_item(const QString &item) const;
 };
 

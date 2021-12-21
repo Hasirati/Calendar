@@ -5,10 +5,16 @@ Challenge::Challenge()
 
 }
 
-Challenge::Challenge(QString name, QString description)
+Challenge::Challenge(int id, QString name, QString description)
 {
+    this->id = id;
     this->name = name;
     this->description = description;
+}
+
+int Challenge::getId()
+{
+    return id;
 }
 
 void Challenge::setName(QString name)

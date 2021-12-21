@@ -5,67 +5,66 @@
 
 CreateChellenge::CreateChellenge(QWidget *parent)
     : QWidget(parent), ui(new Ui::CreateChellenge) {
-  ui->setupUi(this);
+    ui->setupUi(this);
+    conn = DBManager::getInstance();
+    conn->connectToDataBase();
 }
 
 CreateChellenge::~CreateChellenge() { delete ui; }
 
 void CreateChellenge::on_pb_water_clicked() {
-  DataBase conn;
 
-  QString name = "Drink water";
-  int point = 20;
 
-  QVariantList data;
-  data.append(name);
-  data.append(point);
-  conn.inserIntoTable(data);
+    QString name = "Drink water";
+    int point = 20;
 
-  hide();
-  obj.show();
+    QVariantList data;
+    data.append(name);
+    data.append(point);
+    conn->inserIntoTable(data);
+
+    hide();
+    obj.show();
 }
 
 void CreateChellenge::on_pb_walk_clicked() {
 
-  DataBase conn;
 
-  QString name = "Walk";
-  int point = 15;
+    QString name = "Walk";
+    int point = 15;
 
-  QVariantList data;
-  data.append(name);
-  data.append(point);
-  conn.inserIntoTable(data);
+    QVariantList data;
+    data.append(name);
+    data.append(point);
+    conn->inserIntoTable(data);
 
-  hide();
-  obj.show();
+    hide();
+    obj.show();
 }
 
 void CreateChellenge::on_pb_train_clicked() {
-  DataBase conn;
 
-  QString name = "Train";
-  int point = 15;
+    QString name = "Train";
+    int point = 15;
 
-  QVariantList data;
-  data.append(name);
-  data.append(point);
-  conn.inserIntoTable(data);
+    QVariantList data;
+    data.append(name);
+    data.append(point);
+    conn->inserIntoTable(data);
 
-  hide();
-  obj.show();
+    hide();
+    obj.show();
 }
 
 void CreateChellenge::on_pb_read_clicked() {
-  DataBase conn;
-  QString name = "Read";
-  int point = 10;
+    QString name = "Read";
+    int point = 10;
 
-  QVariantList data;
-  data.append(name);
-  data.append(point);
-  conn.inserIntoTable(data);
+    QVariantList data;
+    data.append(name);
+    data.append(point);
+    conn->inserIntoTable(data);
 
-  hide();
-  obj.show();
+    hide();
+    obj.show();
 }

@@ -1,26 +1,28 @@
 #ifndef CHILDREN_H
 #define CHILDREN_H
 
-#include "dbmanager.h"
 #include <QDebug>
 
 class Children
 {
+    int id;
     QString name;
-    QString description;
+    int points;
     int link;
 public:
     Children();
-    Children(QString, QString, int);
+    Children(int id, QString name, int points, int link);
 
-void setName(QString);
-QString getName();
+    int getId();
 
-void setDescription(QString);
-QString getDescription();
+    void setName(QString);
+    QString getName();
 
-void setLink(int);
-int getLink();
+    void setPoints(int);
+    int getPoints();
+
+    void setLink(int);
+    int getLink();
 };
 
 #endif // CHILDREN_H

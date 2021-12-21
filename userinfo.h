@@ -10,13 +10,13 @@
 using namespace std;
 
 class UserInfo {
-  QString getUp;
-  QString timeToResault;
+    QString getUp;
+    QString timeToResault;
 
 public:
-  UserInfo();
-  void setWakeUp(QTime);
-  void setResultDay(QTime);
+    UserInfo();
+    void setWakeUp(QTime);
+    void setResultDay(QTime);
 };
 
 #endif // USERINFO_H

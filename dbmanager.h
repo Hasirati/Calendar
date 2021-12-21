@@ -9,9 +9,18 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QList>
+#include <QMultiMap>
+
+#include "challenge.h"
+#include "children.h"
+
+#define aPICTURE "./picture/"
+#define PICTURE "E:/course-Calendar-of-good-habits/picture/"
 
 #define DATABASE_HOSTNAME "DB"
-#define DATABASE_NAME "DB.sqlite"
+#define aDATABASE_LINK "DB.sqlite"
+#define DATABASE_LINK "E:/course-Calendar-of-good-habits/DB.sqlite"
 
 #define TABLE "challenge"
 #define TABLE_NAME "Name"
@@ -31,26 +40,33 @@
 #define TABLE_NAME_3 "Name"
 #define TABLE_POINTS_3 "Points"
 
-class DataBase : public QObject {
-  Q_OBJECT
+class DBManager : public QObject {
+    Q_OBJECT
 public:
-  explicit DataBase(QObject *parent = nullptr);
-  ~DataBase();
-  void connectToDataBase();
+    void connectToDataBase();
+    static DBManager* getInstance();
+    QList<Challenge> getChellengesList();
+    QMultiMap<int, Children*> getChildrensMap();
+    Children* getChildrenByName(const QString name);
+    void saveToMyChellenge(Children *child);
+    QSqlDatabase getDB();
 
 public slots:
-  bool inserIntoTable(const QVariantList &);
-  bool inserIntoTable(const QString, const QString);
-  bool updateTable(const QVariantList &);
-  bool deleteTape(const int);
-  QSqlDatabase getDB();
+    bool inserIntoTable(const QVariantList &);
+    bool updateTable(const QString);
+    bool updateTable(const int);
+    bool updateTable(const QVariantList &);
+    bool deleteTape(const int);
 
 private:
-  QSqlDatabase db;
-  bool openDataBase();
-  bool restoreDataBase();
-  void closeDataBase();
-  bool createTable();
+    static DBManager* instance;
+    QSqlDatabase db;
+    bool openDataBase();
+    bool restoreDataBase();
+    void closeDataBase();
+    bool createTable();
+    explicit DBManager(QObject *parent = nullptr);
+    ~DBManager();
 };
 
 #endif // DATABASE_H
