@@ -2,22 +2,21 @@
 #define MYCHALLENGE_H
 #include <QDebug>
 
-class MyChallenge
-{
-    int id;
-    QString name;
-    int points;
+class MyChallenge {
+  int id;
+  QString name;
+  int points;
 
 public:
-    MyChallenge();
-    MyChallenge(int id, QString name, int points);
+  MyChallenge();
+  MyChallenge(int id, QString name, int points);
 
-    int getId();
-    void setName(QString name);
-    QString getName();
+  int getId();
+  void setName(QString name);
+  QString getName();
 
-    void setPoints(int points);
-    int getPoints();
+  void setPoints(int points);
+  int getPoints();
 };
 
 #endif // MYCHALLENGE_H

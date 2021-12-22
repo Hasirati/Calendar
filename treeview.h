@@ -2,12 +2,12 @@
 #define TREEVIEW_H
 
 #include <QDialog>
-#include <QWidget>
-#include <QMainWindow>
-#include <QtSql>
-#include <QtDebug>
 #include <QFileInfo>
+#include <QMainWindow>
 #include <QMessageBox>
+#include <QWidget>
+#include <QtDebug>
+#include <QtSql>
 
 #include "dbmanager.h"
 
@@ -19,22 +19,22 @@ class TreeView;
 }
 
 class TreeView : public QDialog {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    explicit TreeView(QWidget *parent = nullptr);
-    ~TreeView();
-    virtual void process(QTreeWidget *tree_widget, QTreeWidgetItem *tree_item);
+  explicit TreeView(QWidget *parent = nullptr);
+  ~TreeView();
+  virtual void process(QTreeWidget *tree_widget, QTreeWidgetItem *tree_item);
 
 private slots:
-    void on_pb_further_clicked();
+  void on_pb_further_clicked();
 
 private:
-    Ui::TreeView *ui;
-    DBManager *conn;
-    QList<Challenge> challengesList;
-    QMultiMap<int, Children*> childrensMultiMap;
-    bool listwidget_exists_item(const QString &item) const;
+  Ui::TreeView *ui;
+  DBManager *conn;
+  QList<Challenge> challengesList;
+  QMultiMap<int, Children *> childrensMultiMap;
+  bool listwidget_exists_item(const QString &item) const;
 };
 
 #endif // TREEVIEW_H
