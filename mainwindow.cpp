@@ -18,10 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
   qDebug() << (model->rowCount());
 }
 
-MainWindow::~MainWindow() {
-  delete ui;
-  delete sum;
-}
+MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::on_pb_add_clicked() { obj.show(); }
 
@@ -31,8 +28,6 @@ void MainWindow::on_pb_save_clicked() {
   QString name, point;
   name = ui->line_name->text();
   point = ui->line_des->text();
-
-  // int pointNumber = stoi(points);
 
   if (query.prepare("SELECT * FROM" TABLE_2 "WHERE name ='" + name +
                     "', points ='" + point + "'")) {
@@ -69,14 +64,12 @@ void MainWindow::on_pb_update_clicked() {
     data.append(name);
     data.append(point);
 
-    //        if(name != "\0" && point != "\0")
-    //            conn->inserIntoTable(data);
-    //        else if (name == "\0")
-    //            conn->inserIntoTable(point);
-    //        else if(point == "\0")
-    //            conn->inserIntoTable(name);
-
-    conn->updateTable(data);
+    if (name != "\0" && point != "\0")
+      conn->updateTable(data);
+    else if (name == "\0")
+      conn->updateTable(point);
+    else if (point == "\0")
+      conn->updateTable(name);
   }
 
   QSqlTableModel *model = new QSqlTableModel();
@@ -102,33 +95,13 @@ void MainWindow::on_pb_delete_clicked() {
 void MainWindow::on_pb_done_clicked() {
   int id;
   id = ui->line_id->text().toInt();
-
   conn->deleteTape(id);
+
   QSqlTableModel *model = new QSqlTableModel();
   model->setTable(TABLE_2);
   ui->tableView->setModel(model);
   model->select();
   qDebug() << (model->rowCount());
-
-  //  for (int i = 0; i < ui->tableView->count(); i++) {
-  //    Children *children =
-  //        conn->getChildrenByName(ui->listWidget->item(i)->text());
-  //    conn->saveToMyChellenge(children);
-  //  }
-
-  //  conn.connectToDataBase();
-
-  //  QList<QString> *point = new QList<QString>();
-  //  QIntValidator count;
-  //  int pos;
-
-  //  QSqlQuery query = QSqlQuery(db);
-  //  query.prepare("SELECT " TABLE_POINTS_2 " FROM " TABLE_2 ")");
-  //  while (query.next()) {
-  //    *point << query.value(0).toString();
-  //  }
-  //  count.validate(point, pos);
-  //  sum += count;
 }
 
 void MainWindow::on_pb_adward_clicked() { obj1.show(); }

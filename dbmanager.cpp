@@ -104,7 +104,7 @@ bool DBManager::updateTable(const QVariantList &data) {
   return false;
 }
 
-bool DBManager::updateTable(const QString date) {
+bool DBManager::updateTable(QString date) {
   QSqlQuery query;
   query.prepare("UPDATE " TABLE_2 " set " TABLE_NAME_2 "= :name");
   query.bindValue(":name", date);
@@ -119,7 +119,7 @@ bool DBManager::updateTable(const QString date) {
   return false;
 }
 
-bool DBManager::updateTable(const int date) {
+bool DBManager::updateTable(int date) {
   QSqlQuery query;
   query.prepare("UPDATE " TABLE_2 " set " TABLE_POINTS_2 "= :points");
   query.bindValue(":points", date);

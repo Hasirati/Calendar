@@ -11,14 +11,17 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <fstream>
+#include <iostream>
 
 #include "challenge.h"
 #include "children.h"
 
-#define PICTURE "./picture/"
+#define PICTURE "D:/JULIA/OOP/course/course-Calendar-of-good-habits/picture/"
 
 #define DATABASE_HOSTNAME "DB"
-#define DATABASE_LINK "DB.sqlite"
+#define DATABASE_LINK                                                          \
+  "D:/JULIA/OOP/course/course-Calendar-of-good-habits/DB.sqlite"
 
 #define TABLE "challenge"
 #define TABLE_NAME "Name"
@@ -51,8 +54,8 @@ public:
 
 public slots:
   bool inserIntoTable(const QVariantList &);
-  bool updateTable(const QString);
-  bool updateTable(const int);
+  bool updateTable(QString);
+  bool updateTable(int);
   bool updateTable(const QVariantList &);
   bool deleteTape(const int);
 

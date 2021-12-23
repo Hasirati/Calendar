@@ -2,8 +2,9 @@
 #define MAINWINDOW_H
 
 #include "adward.h"
-#include "treeview.h"
 #include "dbmanager.h"
+#include "mychallenge.h"
+#include "treeview.h"
 
 #include <QDebug>
 #include <QDialog>
@@ -23,26 +24,24 @@ class MainWindow;
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+  MainWindow(QWidget *parent = nullptr);
+  ~MainWindow();
 
 private slots:
-    void on_pb_add_clicked();
-    void on_pb_save_clicked();
-    void on_pb_update_clicked();
-    void on_pb_delete_clicked();
-    void on_pb_done_clicked();
-    void on_pb_adward_clicked();
+  void on_pb_add_clicked();
+  void on_pb_save_clicked();
+  void on_pb_update_clicked();
+  void on_pb_delete_clicked();
+  void on_pb_done_clicked();
+  void on_pb_adward_clicked();
 
 private:
-    int *sum = new int;
-
-    Ui::MainWindow *ui;
-    DBManager *conn;
-    TreeView obj;
-    Adward obj1;
+  Ui::MainWindow *ui;
+  DBManager *conn;
+  TreeView obj;
+  Adward obj1;
 };
 #endif // MAINWINDOW_H
